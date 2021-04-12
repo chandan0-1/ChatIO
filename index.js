@@ -7,10 +7,11 @@ const port = 8000;
 app.use("/",require("./routes/injex.js"))
 
 
+// Set up the view Engine
+app.set("view engine", ejs);
+app.set("views","./views");
 
 
-
-console.log("hey");
 
 
 app.listen(port, function(err){

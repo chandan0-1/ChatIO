@@ -9,7 +9,7 @@ module.exports.profile = function(req,res){
 };
 
 module.exports.chandan = function(req,res){
-  return res.end("<h2> Redndering from Chandan's Profile</h2>");
+  return res.end("<h2> Rendering from Chandan's Profile</h2>");
 };
 
 // module.exports.home = function (req,res){
