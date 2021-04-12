@@ -1,7 +1,10 @@
 
 
 module.exports = function(req,res){
-  return res.end("<h2> From Profile main Page</h2>");
+  return res.render("userHomepage",{
+    title :"User1"
+  })
+  // return res.end("<h2> From Profile main Page</h2>");
 };
 
 module.exports.profile = function(req,res){

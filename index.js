@@ -8,7 +8,7 @@ app.use("/",require("./routes/injex.js"))
 
 
 // Set up the view Engine
-app.set("view engine", ejs);
+app.set("view engine", "ejs");
 app.set("views","./views");
 
 
