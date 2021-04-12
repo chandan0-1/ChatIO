@@ -4,7 +4,7 @@ const port = 8000;
 
 
 // using Express router
-app.get("/",require("./routes/injex.js"))
+app.use("/",require("./routes/injex.js"))
 
 
 
