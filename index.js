@@ -1,7 +1,16 @@
 const express = require("express");
+const expressEjsLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 8000;
 
+// locating static file
+app.use(express.static('./assets'));
+
+app.use(expressEjsLayouts);
+
+// extracting styles and script file from subpages to the head
+app.set("layout extractStyles", true);
+app.set("layout extractScripts", true);
 
 // using Express router
 app.use("/",require("./routes/injex.js"))
