@@ -18,3 +18,29 @@ module.exports.chandan = function(req,res){
 // module.exports.home = function (req,res){
 //   return res.end("<h1> From the home controller")
 // }
+
+
+// rendering the sign up page
+module.exports.signUp = function(req,res){
+  return res.render('user_sign_up',{
+    title:"ChatIO | Sign Up"
+  })
+};
+
+// rendering the sign In page
+module.exports.signIn = function(req,res){
+  return res.render('user_sign_in',{
+    title:"ChatIO | Sign In"
+  })
+};
+
+// getting the sign up data
+module.exports.create = function(req,res){
+  // TODO Later
+}
+
+
+// getting the sign In data
+module.exports.createSession = function(req,res){
+  // TODO Later
+}
