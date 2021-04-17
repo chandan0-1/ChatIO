@@ -1,4 +1,4 @@
-
+const User = require("../models/users");
 
 module.exports = function(req,res){
   return res.render("userHomepage",{
@@ -36,9 +36,21 @@ module.exports.signIn = function(req,res){
 
 // getting the sign up data
 module.exports.create = function(req,res){
-  // TODO Later
+  if (req.body.password != req.body.confirm_password){
+    return res.redirect("back");
+  }
+  User.findOne({email:req.body.email},function(user){
+    
+    if (!user){
+      User.create(req.body,function(user){
+        return res.redirect("sign-in");
+      })
+    }
+    else{
+      return res.redirect("back");
+    }
+  });
 }
-
 
 // getting the sign In data
 module.exports.createSession = function(req,res){

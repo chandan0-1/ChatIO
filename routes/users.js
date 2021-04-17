@@ -9,4 +9,6 @@ router.get("/profile",userctrlr.profile);
 router.get("/sign-up",userctrlr.signUp);
 router.get("/sign-in",userctrlr.signIn);
 
+router.post("/create",userctrlr.create);
+
 module.exports = router;
