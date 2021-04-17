@@ -1,23 +1,29 @@
 const User = require("../models/users");
 
-module.exports = function(req,res){
-  return res.render("userHomepage",{
-    title :"User1"
-  })
-  // return res.end("<h2> From Profile main Page</h2>");
-};
+
 
 module.exports.profile = function(req,res){
-  return res.end("<h2> From USers's Profile Page</h2>");
+  if (req.cookies.user_id){
+    User.findById(req.cookies.user_id,function(err,user){
+      if (user){
+
+        return res.render("userHomepage",{
+          title: "User -- Profile"
+        })
+      }
+      return res.redirect("/users/sign-in")
+    })
+  }else{
+    return res.redirect("/users/sign-in")
+  }
 };
+
 
 module.exports.chandan = function(req,res){
   return res.end("<h2> Rendering from Chandan's Profile</h2>");
 };
 
-// module.exports.home = function (req,res){
-//   return res.end("<h1> From the home controller")
-// }
+
 
 
 // rendering the sign up page
@@ -54,16 +60,16 @@ module.exports.create = function(req,res){
 
 // getting the sign In data
 module.exports.createSession = function(req,res){
-  User.findOne({email:req.body.email},function(user){
+  User.findOne({email:req.body.email}, function(err,user){
 
     if (user){
-      if (user.password != req.body.password){ //if pass doesn't match
+
+      if (user.password != req.body.password){
         return res.redirect("back");
       }
-
-      // Handling the cookies session
-      res.cookie('user-id',user.id);
-      return res.render("userHomepage");
+      
+      res.cookie("user_id",user.id);
+      return res.redirect("/users/profile");
     }
     else{
       return res.redirect("back");
