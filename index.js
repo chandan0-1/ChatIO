@@ -19,7 +19,7 @@ app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
 // using Express router
-app.use("/",require("./routes/injex.js"))
+app.use("/",require("./routes/index.js"))
 
 
 // Set up the view Engine
