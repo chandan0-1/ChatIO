@@ -1,28 +1,15 @@
 const User = require("../models/users");
 
-// module.exports = function(req,res){
-//   return res.render("userHomepage",{
-//     title :"User1"
-//   })
-//   // return res.end("<h2> From Profile main Page</h2>");
-// };
+module.exports = function(req,res){
+  return res.render("userHomepage",{
+    title :"User1"
+  })
+  // return res.end("<h2> From Profile main Page</h2>");
+};
 
 module.exports.profile = function(req,res){
-  if (req.cookies.user_id){
-    User.findById(req.cookies.user_id,function(err,user){
-      if (user){
-        return res.render("userHomepage",{
-          title:"User",
-          user:user
-        })
-      }
-      return res.redirect("/users/sign-in");
-    })
-  }
-  return res.redirect("/users/sign-in");
-}
-
-
+  return res.end("<h2> From USers's Profile Page</h2>");
+};
 
 module.exports.chandan = function(req,res){
   return res.end("<h2> Rendering from Chandan's Profile</h2>");
@@ -67,24 +54,18 @@ module.exports.create = function(req,res){
 
 // getting the sign In data
 module.exports.createSession = function(req,res){
-  // finding the user
-  User.findOne({email:req.body.email},function(err,user){
-    if (err){console.log("Error in Sign In");return}
+  User.findOne({email:req.body.email},function(user){
 
     if (user){
-
-      // if password doesn't match
-      if (user.password != req.body.password){
+      if (user.password != req.body.password){ //if pass doesn't match
         return res.redirect("back");
       }
 
-      // handling the cookies session
-      res.cookie('user_id',user.id);
-      return res.redirect('/users')
-
-    }else{
-
-      // handle user not found
+      // Handling the cookies session
+      res.cookie('user-id',user.id);
+      return res.render("userHomepage");
+    }
+    else{
       return res.redirect("back");
     }
   })

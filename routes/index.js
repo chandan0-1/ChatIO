@@ -5,7 +5,7 @@ const homectrlr = require("../controllers/home_controller");
 
 
 router.get("/", homectrlr.home);
-router.use("/users",require("/users"));
+router.use("/users",require("./users"));
 
 console.log("Route File Loaded");
 
