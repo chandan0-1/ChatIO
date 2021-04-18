@@ -8,7 +8,8 @@ module.exports.profile = function(req,res){
       if (user){
 
         return res.render("userHomepage",{
-          title: "User -- Profile"
+          title: user.name,
+          user:user
         })
       }
       return res.redirect("/users/sign-in")
