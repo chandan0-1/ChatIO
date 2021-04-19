@@ -6,6 +6,12 @@ const cookieParser = require("cookie-parser");
 const db = require("./config/mongoose");
 // const { urlencoded } = require("express");
 
+// used for session cookie
+const session = require('express-session');
+const passport = require("passport");
+const passportLocal = require("./config/passport-local-strategy");
+
+
 // locating static file
 app.use(express.static('./assets'));
 
@@ -18,8 +24,6 @@ app.use(expressEjsLayouts);
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
-// using Express router
-app.use("/",require("./routes/index.js"))
 
 
 // Set up the view Engine
@@ -28,6 +32,26 @@ app.set("views","./views");
 
 
 
+
+app.use(session({
+    name:'chatio',
+    // TODO changes before depylopment
+    secret:"something",
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*6000)
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
+
+
+// using Express router
+app.use("/",require("./routes/index.js"))
 
 app.listen(port, function(err){
     if (err){
