@@ -1,3 +1,42 @@
+<style>
+  button{
+    padding:4px;
+    margin: 4px;
+    font-size: 0.8rem;
+    /* color:white; */
+    /* background-color: rgb(5, 158, 107); */
+  }
+  button a{
+    text-decoration: none;
+    color:black;
+  }
+  a{
+    text-decoration: none;
+    color:white;
+  }
+</style>
 <header style="background-color: midnightblue;color:white">
   <h2> This is the header part ! </h2>
+
+  <ul>
+    <% if (locals.user){ %>
+      <li>
+        <a href="/users/profile"><h1><%= user.name %></h1></a>
+      </li>
+      
+      <li>
+        <button><a href="/users/sign-out">Sign Out</a></button>
+      </li>
+
+    <% }else{ %>
+      <li>
+        <button><a href="/users/sign-in">Sign In</a></button>
+      </li>
+
+      <li>
+        <button><a href="/users/sign-up">Sign Up</a></button>
+      </li>
+
+      <% } %>
+  </ul>
 </header>

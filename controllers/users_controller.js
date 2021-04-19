@@ -57,27 +57,14 @@ module.exports.create = function(req,res){
   });
 }
 
-// getting the sign In data using manual auth
-// module.exports.createSession = function(req,res){
-//   User.findOne({email:req.body.email}, function(err,user){
-
-//     if (user){
-
-//       if (user.password != req.body.password){
-//         return res.redirect("back");
-//       }
-      
-//       res.cookie("user_id",user.id);
-//       return res.redirect("/users/profile");
-//     }
-//     else{
-//       return res.redirect("back");
-//     }
-//   })
-// }
-
 
 // getting the sign In data using passport
 module.exports.createSession = function(req,res){
-  return res.redirect('/users/profile');
+  return res.redirect('/');
+}
+
+module.exports.destroySession = function(req,res){
+  req.logout();
+
+  return res.redirect("/");
 }
