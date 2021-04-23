@@ -12,9 +12,18 @@
 
   <!-- <%- include('_header') -%> -->
 <link rel="stylesheet" href="./css/users.css">
-  <h1> Home Page of the: <%= title %> </h1>
-  <p> Name: <%= user.name %> </p>
-  <p> Email: <%= user.email %> </p>
-  <p> Password: <%= user.password %> </p>
-<!-- </body>
-</html> -->
+
+
+<h1> Home Page of the: <%= title %> </h1>
+<p> Name: <%= user.name %> </p>
+<p> Email: <%= user.email %> </p>
+<p> Password: <%= user.password %> </p>
+
+
+<section id='feed-post'>
+  <h3>Posts</h3>
+  <form action="" id='new-post-form' method="POST">
+    <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea>
+    <input type="submit" value="POST">
+  </form>
+</section>
