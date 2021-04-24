@@ -6,6 +6,7 @@ const homectrlr = require("../controllers/home_controller");
 
 router.get("/", homectrlr.home);
 router.use("/users",require("./users"));
+router.use("/posts",require("./posts"));
 
 console.log("Route File Loaded");
 

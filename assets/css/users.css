@@ -1,1 +1,8 @@
-body{background-color: midnightblue;}
+body{
+  background-color: midnightblue;
+}
+
+#profile{
+    margin-top:20vh;
+    background-color: red;
+  }

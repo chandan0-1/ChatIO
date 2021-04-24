@@ -1,11 +1,25 @@
 <style>
+     body{
+      margin:0;
+   }
+   header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0px;
+      text-align: center;
+      background-color: midnightblue;
+      color:white;
+      width:100%;
+      height: 8%;
+   }
   button{
     padding:4px;
     margin: 4px;
     font-size: 0.8rem;
-    /* color:white; */
-    /* background-color: rgb(5, 158, 107); */
   }
+
   button a{
     text-decoration: none;
     color:black;
@@ -14,19 +28,36 @@
     text-decoration: none;
     color:white;
   }
+  ul{
+    list-style-type:none;
+    position: absolute;
+    right:20px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ul li{
+    margin-left: 10px;
+    display: inline;
+    
+  }
 </style>
-<header style="background-color: midnightblue;color:white">
-  <h2> This is the header part ! </h2>
+
+
+<header >
+  <h2> ChatIO | Home </h2>
 
   <ul>
     <% if (locals.user){ %>
-      <li>
-        <a href="/users/profile"><h1><%= user.name %></h1></a>
-      </li>
-      
-      <li>
-        <button><a href="/users/sign-out">Sign Out</a></button>
-      </li>
+
+          <li>
+            <a href="/users/profile"><h1><%= user.name %></h1></a>
+          </li>
+          
+          <li>
+            <button><a href="/users/sign-out">Sign Out</a></button>
+          </li>
 
     <% }else{ %>
       <li>

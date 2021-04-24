@@ -15,13 +15,14 @@ const mongoStore = require('connect-mongo')(session)//express-session
 
 const sassMiddleware = require("node-sass-middleware");
 
-// app.use(sassMiddleware{
-//     src:"./assets/scss",
-//     dest:"./assets/css",
-//     debug:true,
-//     outputStyle:'extended',
-//     prefix:"/css"
-// });
+app.use(sassMiddleware({
+    src:"./assets/scss",
+    dest:"./assets/css",
+    debug:true,
+    outputStyle:'extended',
+    prefix:"/css"
+}));
+
 // locating static file
 app.use(express.static('./assets'));
 

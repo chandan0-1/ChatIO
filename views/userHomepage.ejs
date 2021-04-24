@@ -1,29 +1,25 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> <%= title %> </title>
-</head>
 
 
-<body> -->
-
-  <!-- <%- include('_header') -%> -->
 <link rel="stylesheet" href="./css/users.css">
 
+<style>
+  #profile{
+    margin-top:15vh;
+    /* background-color: red; */
+  }
+</style>
 
-<h1> Home Page of the: <%= title %> </h1>
-<p> Name: <%= user.name %> </p>
+<div id="profile">
+<h1> Home Page of the: <%= user.name %> </h1>
+<!-- <p> Name: <%= user.name %> </p> -->
 <p> Email: <%= user.email %> </p>
-<p> Password: <%= user.password %> </p>
 
 
 <section id='feed-post'>
   <h3>Posts</h3>
-  <form action="" id='new-post-form' method="POST">
+  <form action="/posts/create" id='new-post-form' method="POST">
     <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea>
     <input type="submit" value="POST">
   </form>
 </section>
+</div>
