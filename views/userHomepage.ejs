@@ -3,23 +3,68 @@
 <link rel="stylesheet" href="./css/users.css">
 
 <style>
-  #profile{
-    margin-top:15vh;
-    /* background-color: red; */
+  body{
+    background-color: rgb(220, 223, 226);
   }
+  #profile{
+    
+    width:45vw;
+    margin-top:15vh;
+    margin-left: 35vw;
+    background-color: white;
+  }
+  #post-list-container{
+    width:100%;
+    margin-top:2vh;
+    text-align: left;
+    height:50vh;
+    display: block;
+    /* background-color: green; */
+    /* color:red; */
+}
+#post-list-container ul{
+  position: relative;
+  left:0;
+  display: block;
+  /* margin-left: 0; */
+}
+#post{
+  margin:10px;
+  background-color: rgb(146, 146, 151);
+}
 </style>
 
 <div id="profile">
-<h1> Home Page of the: <%= user.name %> </h1>
-<!-- <p> Name: <%= user.name %> </p> -->
-<p> Email: <%= user.email %> </p>
+    <h1> Home Page of the: <%= user.name %> </h1>
+    <!-- <p> Name: <%= user.name %> </p> -->
+    <p> Email: <%= user.email %> </p>
 
 
-<section id='feed-post'>
-  <h3>Posts</h3>
-  <form action="/posts/create" id='new-post-form' method="POST">
-    <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea>
-    <input type="submit" value="POST">
-  </form>
-</section>
+    <section id='feed-post'>
+      <h3>Posts</h3>
+      <form action="/posts/create" id='new-post-form' method="POST">
+        <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea>
+        <input type="submit" value="POST">
+      </form>
+    </section>
+
+
+    <div id="post-list-container">
+      <ul>
+        <% for (post of posts){ %>
+          <div id='post'>
+
+            <li >
+              <!-- <p> -->
+                <span style="color:green"><%=post.user.name %></span>
+                <span>shared:</span></br>
+                
+                <%= post.content %>
+                <!-- </p> -->
+              </li><br>
+          </div>
+
+        <% } %>
+      </ul>
+    </div>
 </div>

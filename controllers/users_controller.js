@@ -1,10 +1,25 @@
 const User = require("../models/users");
 
 
-
+const Post = require("../models/post");
 module.exports.profile = function(req,res){
-  return res.render("userHomepage",{
-    title: "User Profile",
+
+
+  // Post.find({}, function(err,posts){
+  //   return res.render("userHomepage",{
+  //     title: "User Profile",
+  //     posts:posts
+
+  // })
+  // })
+
+  // populating the USer
+  Post.find({}).populate('user').exec(function(err,posts){
+    return res.render("userHomepage",{
+      title: "User Profile",
+      posts:posts
+
+  })
   })
 };
 
