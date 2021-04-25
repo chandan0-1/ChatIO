@@ -7,7 +7,7 @@ const homectrlr = require("../controllers/home_controller");
 router.get("/", homectrlr.home);
 router.use("/users",require("./users"));
 router.use("/posts",require("./posts"));
+router.use('/comments',require("./comments"));
 
-console.log("Route File Loaded");
 
 module.exports = router;

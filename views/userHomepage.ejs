@@ -10,42 +10,59 @@
     
     width:45vw;
     margin-top:15vh;
-    margin-left: 35vw;
+    margin-left: 30vw;
     background-color: white;
   }
   #post-list-container{
     width:100%;
     margin-top:2vh;
     text-align: left;
-    height:50vh;
+    height:auto;
     display: block;
+    margin-bottom: 5vh;
     /* background-color: green; */
     /* color:red; */
 }
 #post-list-container ul{
   position: relative;
-  left:0;
-  display: block;
+  left:-45px;
+  display:inline-block;
   /* margin-left: 0; */
 }
 #post{
   margin:10px;
-  background-color: rgb(146, 146, 151);
+  background-color: rgb(16, 53, 88);
 }
+#button{
+    background-color: rgb(53, 61, 141);
+    color:white;
+    width:150px;
+    padding:3px;
+    font-size: 0.9rem;
+    height:4vh;
+    cursor: pointer;
+    border-radius: 5px;;
+  }
+  h1,h3{
+    text-align: center;
+    color:rgb(216, 193, 63)
+  }
 </style>
 
 <div id="profile">
-    <h1> Home Page of the: <%= user.name %> </h1>
+    <h1 style="background-color: rgb(234, 238, 236);"> Welcome: <%= user.name %> !</h1>
     <!-- <p> Name: <%= user.name %> </p> -->
     <p> Email: <%= user.email %> </p>
 
 
     <section id='feed-post'>
-      <h3>Posts</h3>
-      <form action="/posts/create" id='new-post-form' method="POST">
-        <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea>
-        <input type="submit" value="POST">
-      </form>
+      <h2>Posts</h2>
+      <% if (locals.user){ %>
+          <form action="/posts/create" id='new-post-form' method="POST">
+            <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea></br>
+            <input id="button" type="submit" value="POST">
+          </form>
+      <% } %>
     </section>
 
 
@@ -56,15 +73,30 @@
 
             <li >
               <!-- <p> -->
-                <span style="color:green"><%=post.user.name %></span>
-                <span>shared:</span></br>
+                <span style="color:rgb(55, 228, 32); font-size:large;"><%=post.user.name %></span>
+                <span style="color:rgb(189, 183, 183);">shared:</span></br>
+                <span style="color:rgb(255, 255, 255);"><%= post.content %><p>
                 
-                <%= post.content %>
-                <!-- </p> -->
-              </li><br>
+            </li>
+
+            <div class="post-comments">
+              <%if (locals.user){ %>
+                <form action="/comments/create" method="POST">
+                  <input type="text" name="content" placeholder="type here for comment...">
+                  <input type="hidden" name='post' value= "<%= post._id %>" >
+                  <input type="submit" value="Add Comment">
+                </form>
+      
+             <% } %>   
+            </div>
+
+
           </div>
 
         <% } %>
       </ul>
+
+      
     </div>
+
 </div>
