@@ -47,6 +47,25 @@
     text-align: center;
     color:rgb(216, 193, 63)
   }
+
+  #post-comment-list{
+    background-color: rgb(7, 91, 119);
+    color:rgb(221, 218, 215);
+    /* margin:10px; */
+  }
+  #post-comment-list span{
+    color:aqua;
+    font-size: 22px;
+  }
+  #post-comment-list p{
+    /* color:aqua; */
+    margin-left: 10px;
+    margin-top: -1px;
+    font-size: 17px;
+  }
+  #comment-content{
+    color:wheat
+  }
 </style>
 
 <div id="profile">
@@ -59,7 +78,7 @@
       <h2>Posts</h2>
       <% if (locals.user){ %>
           <form action="/posts/create" id='new-post-form' method="POST">
-            <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...."></textarea></br>
+            <textarea name="content" cols="30" rows="4" placeholder="Enter Text here...." required></textarea></br>
             <input id="button" type="submit" value="POST">
           </form>
       <% } %>
@@ -82,13 +101,27 @@
             <div class="post-comments">
               <%if (locals.user){ %>
                 <form action="/comments/create" method="POST">
-                  <input type="text" name="content" placeholder="type here for comment...">
+                  <input type="text" name="content" placeholder="type here for comment..." required>
                   <input type="hidden" name='post' value= "<%= post._id %>" >
                   <input type="submit" value="Add Comment">
                 </form>
       
              <% } %>   
+
+              <div id="post-comment-list">
+                <ul id="post-comment-<%= post._id %>">
+                  <% for (comment of post.comments) {%>
+                    <p><span> <%= comment.user.name %></span> commented:</p>
+                    <p id="comment-content">
+                      <%= comment.content %>
+                    </p>
+                  <% }%>
+  
+                </ul>  
+              </div>
+
             </div>
+
 
 
           </div>
