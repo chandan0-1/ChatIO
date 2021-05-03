@@ -83,7 +83,7 @@ module.exports.create = function(req,res){
 
 // getting the sign In data using passport
 module.exports.createSession = function(req,res){
-  return res.redirect('/');
+  return res.redirect('/users/profile');
 }
 
 module.exports.destroySession = function(req,res){
