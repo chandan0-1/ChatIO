@@ -1,12 +1,77 @@
+
 body{
-  background-color: midnightblue;
+  background-color: rgb(220, 223, 226);
 }
 
 #profile{
-    margin-top:20vh;
-    background-color: red;
-  }
+  width:45vw;
+  margin-top:15vh;
+  margin-left: 30vw;
+  background-color: white;
+}
 
+#comment-container{
+  display: flex;
+  position: relative;
+  width: 93%;
+  margin-left: 1% ;
+  justify-content: space-between;
+}
+
+#delete-button{
+  color: red;
+  font-size: 1.2rem;
+}
 #post-list-container{
-  background-color: green;
+  width:100%;
+  margin-top:2vh;
+  text-align: left;
+  height:auto;
+  display: block;
+  margin-bottom: 5vh;
+}
+
+#post-list-container ul{
+position: relative;
+left:-45px;
+display:inline-block;
+}
+
+#post{
+margin:10px;
+background-color: rgb(16, 53, 88);
+}
+
+#button{
+  background-color: rgb(53, 61, 141);
+  color:white;
+  width:150px;
+  padding:3px;
+  font-size: 0.9rem;
+  height:4vh;
+  cursor: pointer;
+  border-radius: 5px;;
+}
+h1,h3{
+  text-align: center;
+  color:rgb(216, 193, 63)
+}
+
+#post-comment-list{
+  background-color: rgb(73, 16, 138);
+  color:rgb(221, 218, 215);
+  /* margin:10px; */
+}
+#post-comment-list span{
+  color:aqua;
+  font-size: 22px;
+}
+#post-comment-list p{
+  /* color:aqua; */
+  margin-left: 10px;
+  margin-top: -1px;
+  font-size: 17px;
+}
+#comment-content{
+  color:wheat
 }

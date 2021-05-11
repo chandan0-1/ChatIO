@@ -1,72 +1,6 @@
+<link rel="stylesheet" href="/css/users.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
-
-<link rel="stylesheet" href="./css/users.css">
-
-<style>
-  body{
-    background-color: rgb(220, 223, 226);
-  }
-  #profile{
-    
-    width:45vw;
-    margin-top:15vh;
-    margin-left: 30vw;
-    background-color: white;
-  }
-  #post-list-container{
-    width:100%;
-    margin-top:2vh;
-    text-align: left;
-    height:auto;
-    display: block;
-    margin-bottom: 5vh;
-    /* background-color: green; */
-    /* color:red; */
-}
-#post-list-container ul{
-  position: relative;
-  left:-45px;
-  display:inline-block;
-  /* margin-left: 0; */
-}
-#post{
-  margin:10px;
-  background-color: rgb(16, 53, 88);
-}
-#button{
-    background-color: rgb(53, 61, 141);
-    color:white;
-    width:150px;
-    padding:3px;
-    font-size: 0.9rem;
-    height:4vh;
-    cursor: pointer;
-    border-radius: 5px;;
-  }
-  h1,h3{
-    text-align: center;
-    color:rgb(216, 193, 63)
-  }
-
-  #post-comment-list{
-    background-color: rgb(7, 91, 119);
-    color:rgb(221, 218, 215);
-    /* margin:10px; */
-  }
-  #post-comment-list span{
-    color:aqua;
-    font-size: 22px;
-  }
-  #post-comment-list p{
-    /* color:aqua; */
-    margin-left: 10px;
-    margin-top: -1px;
-    font-size: 17px;
-  }
-  #comment-content{
-    color:wheat
-  }
-</style>
 
 <div id="profile">
     <h1 style="background-color: rgb(234, 238, 236);"> Welcome: <%= user.name %> !</h1>
@@ -88,43 +22,8 @@
     <div id="post-list-container">
       <ul>
         <% for (post of posts){ %>
-          <div id='post'>
 
-            <li >
-              <!-- <p> -->
-                <span style="color:rgb(55, 228, 32); font-size:large;"><%=post.user.name %></span>
-                <span style="color:rgb(189, 183, 183);">shared:</span></br>
-                <span style="color:rgb(255, 255, 255);"><%= post.content %><p>
-                
-            </li>
-
-            <div class="post-comments">
-              <%if (locals.user){ %>
-                <form action="/comments/create" method="POST">
-                  <input type="text" name="content" placeholder="type here for comment..." required>
-                  <input type="hidden" name='post' value= "<%= post._id %>" >
-                  <input type="submit" value="Add Comment">
-                </form>
-      
-             <% } %>   
-
-              <div id="post-comment-list">
-                <ul id="post-comment-<%= post._id %>">
-                  <% for (comment of post.comments) {%>
-                    <p><span> <%= comment.user.name %></span> commented:</p>
-                    <p id="comment-content">
-                      <%= comment.content %>
-                    </p>
-                  <% }%>
-  
-                </ul>  
-              </div>
-
-            </div>
-
-
-
-          </div>
+          <%- include('_post.ejs')%>
 
         <% } %>
       </ul>
@@ -133,3 +32,14 @@
     </div>
 
 </div>
+
+<aside>
+  <h2>Friends</h2>
+  <% for (f of all_users){ %>
+    <h4>
+      <a href="/users/profile/<%= f.id %>"></a>
+    </h4>
+
+  <% } %>
+</aside>
+<script src="/js/home_posts.js"></script>

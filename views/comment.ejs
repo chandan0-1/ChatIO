@@ -1,0 +1,16 @@
+<li>
+  <p>
+    <div id="comment-container">
+      <span> <%= comment.user.name %><span style="color: white; font-size: 0.9rem;"> commented:</span> </span>
+      
+      
+      <% if (locals.user && locals.user.id == comment.user.id){ %>
+          <a id="delete-button"  href="/comments/destroy/<%= comment.id %>"><i class="fas fa-times"></i></a>
+        <% } %>
+    </div>
+  </p>
+
+  <p id="comment-content">
+      <%= comment.content %>
+  </p>
+  </li>
