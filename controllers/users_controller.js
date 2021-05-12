@@ -2,6 +2,16 @@ const User = require("../models/users");
 const Post = require("../models/post");
 
 
+module.exports.users_profile = function(req,res){
+  User.findById(req.params.id, function(err, user){
+    return res.render('user_profile', {
+      title:'User Profile',
+      profile_user:user
+    });
+  });
+}
+
+
 module.exports.profile = async function(req,res){
 
 

@@ -1,10 +1,12 @@
 body {
-  background-color: #dcdfe2; }
+  background-color: #dcdfe2;
+  display: flex;
+  justify-content: space-around; }
 
 #profile {
   width: 45vw;
-  margin-top: 15vh;
-  margin-left: 30vw;
+  margin-top: 8vh;
+  margin-left: 10vw;
   background-color: white; }
 
 #comment-container {
@@ -66,3 +68,20 @@ h1, h3 {
 
 #comment-content {
   color: wheat; }
+
+aside {
+  display: inline;
+  padding-left: 2vw;
+  border-left: 2px solid #b4b1b1; }
+  aside a {
+    color: #ee06c7; }
+
+#users-data {
+  margin-top: 7vw; }
+  #users-data p {
+    color: #464343;
+    text-align: center;
+    letter-spacing: 1px; }
+  #users-data span {
+    color: black;
+    font-size: 1.1rem; }
