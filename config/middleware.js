@@ -4,5 +4,5 @@ module.exports.setflash = function(req,res,next){
     'error' :req.flash('error')
   }
 
-  next() //very imp otherwise page will keep reloading
+  next() //very imp otherwise page will keep reloading..
 }
