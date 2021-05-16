@@ -1,6 +1,6 @@
 <div id='post-<%= post.id %>' class="post">
 
-  <li >
+  <li id="" >
       <% if (locals.user && locals.user.id == post.user.id){ %>
         <small>
           <a class="delete-post-button" style="color: red;" href="/posts/destroy/<%= post.id %>"><i class="far fa-trash-alt"></i></a>

@@ -2,17 +2,25 @@
   body{
     background-color: rgb(199, 199, 233);
   }
+
+  #sign-in-contanier{
+    width:40vw;
+    height: 65vh;
+    margin-left:30vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
   form input{
     display: block;
     margin:7px;
-    width:320px;
+    width:19vw;
     height:30px;
     border-radius: 4px;
     border-width: 0px;
   }
   form{
     margin-top: 10vh;
-    margin-left:40vw;
 
   }
   h1{
@@ -22,19 +30,48 @@
   #button{
     background-color: rgb(53, 61, 141);
     color:white;
-    width:150px;
+    width:19.3vw;
     padding:3px;
     font-size: 0.9rem;
     height:4vh;
     cursor: pointer;
   }
+  #google-auth{
+    color:rgb(252, 252, 252);
+    width:19.3vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 1.8vw;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px rgb(71, 71, 71) inset;
+  }
+  #google-auth p{
+  color: rgb(80, 77, 77);
+  }
+
+  #logo{
+    width:25px;
+    height:25px;
+  }
 
   </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
-
+<div id="sign-in-contanier">
 <form action="/users/create-session" method="POST">
   <h1>Sign In</h1>
   <input type="email" name="email" placeholder="Enter Email" required>
   <input type="password" name="password" placeholder="Enter Password" required>
   <input id="button" type="submit" value="Sign In">
 </form>
+
+<a href="/users/auth/google">
+  <div id="google-auth">
+  <img id="logo" src="/images/300221.png">
+  <p>&nbspSign In/Sign Up</p>
+</div>
+</a>
+</div>

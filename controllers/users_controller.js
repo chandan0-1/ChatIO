@@ -25,7 +25,7 @@ module.exports.profile = async function(req,res){
 
   // populating the USer
   try{
-      let posts = await Post.find({})
+      let posts = await Post.find({}).sort('-createdAt')
       .populate('user')
       .populate({
         path:'comments',
