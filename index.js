@@ -1,9 +1,11 @@
 const express = require("express");
+const env = require('./config/environment');
 const expressEjsLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 8000;
 const cookieParser = require("cookie-parser");
 const db = require("./config/mongoose");
+const path = require("path");
 // const { urlencoded } = require("express");
 
 // used for session cookie
@@ -20,16 +22,22 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
 
+// Setting up Socket.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("chat Server is listening on the port no: 5000");
+
 app.use(sassMiddleware({
-    src:"./assets/scss",
-    dest:"./assets/css",
+    src: path.join(__dirname, env.asset_path, 'scss'),
+    dest: path.join(__dirname, env.asset_path, 'css'),
     debug:true,
     outputStyle:'extended',
     prefix:"/css"
 }));
 
 // locating static file
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -52,7 +60,7 @@ app.set("views","./views");
 app.use(session({
     name:'chatio',
     // TODO changes before depylopment
-    secret:"something",
+    secret: env.session_cookie_key,
     saveUninitialized:false,
     resave:false,
     cookie:{

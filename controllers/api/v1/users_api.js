@@ -1,5 +1,6 @@
 const User = require('../../../models/users');
 const jwt = require("jsonwebtoken");
+const env = require("../../../config/environment")
 
 
 module.exports.createSession = async function(req, res){
@@ -16,7 +17,7 @@ module.exports.createSession = async function(req, res){
     return res.json(200, {
       message : "Sign in Successfull and token Generated!",
       data:{
-        token:jwt.sign(user.toJSON(), 'ChatIO', { expiresIn: '100000'})
+        token:jwt.sign(user.toJSON(), env.jwt_secretKey, { expiresIn: '100000'})
       }
     })
       

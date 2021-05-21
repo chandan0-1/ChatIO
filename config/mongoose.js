@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const env = require('../config/environment');
 
-mongoose.connect("mongodb://localhost/chatio_development");
+
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 const db = mongoose.connection;
 

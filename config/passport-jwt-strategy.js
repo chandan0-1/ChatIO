@@ -1,13 +1,14 @@
 const passport = require('passport');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
+const env = require("../config/environment")
 
 
 const User = require('../models/users');
 
 let opts = {
   jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'Chatio'
+  secretOrKey: env.jwt_secretKey,
 }
 
 
